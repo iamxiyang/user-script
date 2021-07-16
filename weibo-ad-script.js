@@ -45,7 +45,7 @@ $(function () {
     const ads = $('.vue-recycle-scroller__item-view .wbpro-ad-tag:contains("广告")');
     if (ads.length > 0) {
       for (let i = 0, len = ads.length; i < len; i++) {
-        const parent = $(ads[0]).parents('.vue-recycle-scroller__item-view');
+        const parent = $(ads[i]).parents('.vue-recycle-scroller__item-view');
         $(parent).find('.morepop').click();
         setTimeout(() => {
           $(parent).find('.woo-pop-wrap-main div').first().click();
