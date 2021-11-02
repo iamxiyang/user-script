@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name 自动点击PC微博广告的不感兴趣
 // @namespace https://github.com/iamxiyang/user-script
-// @version 0.1.0
-// @description 新版PC微博采取了虚拟列表技术，直接使用广告过滤工具会显示很多空白，这个脚本通过监听滚动，自动把可能出现的广告点击x->不感兴趣
+// @version 0.2.0
+// @description 新版PC微博采取了虚拟列表，使用广告过滤工具会显示很多空白，这个脚本通过监听滚动，自动把可能出现的广告点击x->不感兴趣
 // @author hexiyang
 // @connect www.weibo.com
 // @include *://weibo.com/*
@@ -14,23 +14,7 @@
 $(function () {
 
   // debug模式会在控制台输出log
-  const IS_DEBUG = true;
-
-  /*
-  微博广告特征：
-  ~weibo.com##.con_ad
-  weibo.com###pl_common_ali
-  weibo.com##.UG_bn_a
-  weibo.com##.pic_ad
-  weibo.com##.tag_showTopicL[href^="https://shop.sc.weibo.com/"]
-  weibo.com##div[ad-data]
-  weibo.com##div[feedtype = "ad"]
-  weibo.com# ?#.card-content > ul > li : -abp-has(> p > .icon-txt-recommend)
-  weibo.com# ?#.card-wrap : -abp-has(> .card-film > .card-head > .title: -abp-contains(广告))
-  weibo.com# ?#.vue-recycle-scroller__item-view : -abp-has(.wbpro-ad-tag: -abp-contains(广告))
-  weibo.com# ?#tr : -abp-has(> .td-03 > .icon-txt-recommend)
-  特征来源：https://github.com/AdguardTeam/AdguardFilters#adguard-filters
-  */
+  const IS_DEBUG = false;
 
   // 输出日志
   const log = (content) => {
@@ -42,15 +26,18 @@ $(function () {
   // 微博信息流点击不感兴趣
   const closeWeiboAd = () => {
     // 寻找微博广告
-    const ads = $('.vue-recycle-scroller__item-view .wbpro-ad-tag:contains("广告")');
+
+    const ads = $('.vue-recycle-scroller__item-wrapper > div > div > article > div > header > div.woo-box-flex > div > span > div > i');
     if (ads.length > 0) {
       for (let i = 0, len = ads.length; i < len; i++) {
-        const parent = $(ads[i]).parents('.vue-recycle-scroller__item-view');
-        $(parent).find('.morepop').click();
-        setTimeout(() => {
-          $(parent).find('.woo-pop-wrap-main div').first().click();
-          log('已关闭广告1条')
-        })
+        // log($(ads[i]).attr('title'))
+        if ($(ads[i]).attr('title') === '负反馈') {
+          $(ads[i]).parents('.morepop_moreIcon_1RvP9').click();
+          setTimeout(() => {
+            $(parent).find('.woo-pop-wrap-main div').first().click();
+            log('已关闭广告1条')
+          })
+        }
       }
     }
   };
