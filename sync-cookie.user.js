@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name Cookie同步
 // @namespace https://github.com/iamxiyang/user-script
-// @version 0.3.0
+// @version 0.3.1
 // @description 同步另一个站点的Cookie到当前站点，可以在本地启动多个项目开发时方便的共享相同的Cookie
 // @author hexiyang
 // @homepage https://hexiyang.cn
-// @updateURL https://github.com/iamxiyang/user-script/raw/master/sync-cookie.user.js
-// @downloadURL https://github.com/iamxiyang/user-script/raw/master/sync-cookie.user.js
+// @updateURL https://github.com/iamxiyang/user-script/raw/main/sync-cookie.user.js
+// @downloadURL https://github.com/iamxiyang/user-script/raw/main/sync-cookie.user.js
 // @connect .cn
 // @connect .com
 // @match http://*/*

@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name 自动点击PC微博广告的不感兴趣
 // @namespace https://github.com/iamxiyang/user-script
-// @version 0.2.0
+// @version 0.2.1
 // @description 新版PC微博采取了虚拟列表，使用广告过滤工具会显示很多空白，这个脚本通过监听滚动，自动把可能出现的广告点击x->不感兴趣
 // @author hexiyang
 // @homepage https://hexiyang.cn
-// @updateURL https://github.com/iamxiyang/user-script/raw/master/weibo-ad-script.user.js
-// @downloadURL https://github.com/iamxiyang/user-script/raw/master/weibo-ad-script.user.js
+// @updateURL https://github.com/iamxiyang/user-script/raw/main/weibo-ad-script.user.js
+// @downloadURL https://github.com/iamxiyang/user-script/raw/main/weibo-ad-script.user.js
 // @connect www.weibo.com
 // @include *://weibo.com/*
 // @include *://www.weibo.com/*
